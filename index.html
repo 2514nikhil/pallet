@@ -47,6 +47,21 @@ details summary{cursor:pointer;font-weight:600}
 textarea{width:100%;height:150px;margin-top:10px;border:1px solid var(--ubd);border-radius:10px;background:transparent;padding:10px;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;resize:vertical}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ut);color:var(--us);padding:8px 14px;border-radius:9px;opacity:0;pointer-events:none;transition:opacity .2s}
 .toast.on{opacity:1}
+/* ---------- editor hierarchy ---------- */
+.editor-head{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-bottom:18px;border-bottom:1px solid var(--ubd)}
+.editor-head>div:first-child{min-width:0}
+.editor-head #pname{display:block;font-size:clamp(18px,2vw,22px);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.control-groups{display:flex;align-items:flex-end;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+.control-group{display:flex;flex-direction:column;gap:5px;min-width:0}
+.control-group-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--um)}
+.control-group .seg{width:max-content;flex:0 1 auto}
+.control-group .seg button{color:var(--ut);background:var(--us)}
+.control-group .seg button:hover{background:color-mix(in srgb,var(--ua) 10%,var(--us))}
+.control-group .seg button[aria-pressed=true]{background:var(--ua);color:#fff}
+.edit{padding:18px 0 4px;margin-top:0}
+.edit::before{content:"Edit colors";grid-column:1/-1;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--um)}
+.editor-actions{padding-top:16px;margin-top:12px;border-top:1px solid var(--ubd)}
+.editor-actions>.row:last-child{margin-left:auto}
 /* ---------- preview ---------- */
 #pv{background:var(--bg);color:var(--tx);border:1px solid var(--ubd);border-radius:14px;overflow:hidden;transition:background .25s,color .25s;line-height:1.5}
 #pv h2,#pv h3,#pv p{margin:0}
@@ -143,15 +158,18 @@ table{min-width:430px}
   aside h1{font-size:22px}
   .list{margin-inline:-2px;padding:0 2px 8px}
   .pal{flex-basis:min(148px,42vw)}
-  .panel>.row.sp{display:block}
-  .panel>.row.sp>.row{width:100%;margin-top:14px}
+  .editor-head{display:block;padding-bottom:14px}
+  .control-groups{justify-content:stretch;align-items:stretch;margin-top:16px;gap:10px}
+  .control-group{flex:1}
+  .control-group .seg{width:100%}
   .seg{flex:1 1 0}
   .seg button{padding:10px 7px;font-size:13px}
-  .edit{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .edit{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-top:16px}
   .ed{padding:5px;gap:6px}
   .ed input[type=color]{width:34px;height:34px}
   .ed input[type=text]{font-size:14px}
-  .row.sp>.row:last-child{width:100%}
+  .editor-actions{display:block}
+  .editor-actions>.row:last-child{width:100%;margin-top:12px}
   #shuffle,#reset,#save{flex:1}
   #sname{flex:1 1 130px;width:auto!important}
   .hero{grid-template-columns:1fr;gap:22px;padding:28px 16px 24px}
@@ -203,19 +221,25 @@ table{min-width:430px}
 </aside>
 <div class="main">
   <div class="panel">
-    <div class="row sp">
+    <div class="editor-head">
       <div><b id="pname"></b> <span class="sub" id="pedit"></span></div>
-      <div class="row">
-        <div class="seg" id="views" role="group" aria-label="Preview page">
+      <div class="control-groups">
+        <div class="control-group">
+          <span class="control-group-label">Preview</span>
+          <div class="seg" id="views" role="group" aria-label="Preview page">
           <button data-v="landing" aria-pressed="true">Landing</button><button data-v="dash" aria-pressed="false">Dashboard</button><button data-v="comp" aria-pressed="false">Components</button>
+          </div>
         </div>
-        <div class="seg" id="modes" role="group" aria-label="Color mode">
+        <div class="control-group">
+          <span class="control-group-label">Theme</span>
+          <div class="seg" id="modes" role="group" aria-label="Color mode">
           <button data-m="light" aria-pressed="true">Light</button><button data-m="dark" aria-pressed="false">Dark</button>
+          </div>
         </div>
       </div>
     </div>
     <div class="edit" id="edit"></div>
-    <div class="row sp" style="margin-top:12px">
+    <div class="row sp editor-actions">
       <div class="chk" id="chk"></div>
       <div class="row">
         <button class="btn2" id="shuffle">Shuffle</button>
