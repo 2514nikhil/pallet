@@ -159,11 +159,12 @@ table{min-width:430px}
   .list{margin-inline:-2px;padding:0 2px 8px}
   .pal{flex-basis:min(148px,42vw)}
   .editor-head{display:block;padding-bottom:14px}
-  .control-groups{justify-content:stretch;align-items:stretch;margin-top:16px;gap:10px}
-  .control-group{flex:1}
+  .control-groups{display:block;margin-top:16px}
+  .control-group{width:100%}
+  .control-group+.control-group{margin-top:12px}
   .control-group .seg{width:100%}
   .seg{flex:1 1 0}
-  .seg button{padding:10px 7px;font-size:13px}
+  .seg button{min-width:0;padding:10px 5px;font-size:12px}
   .edit{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-top:16px}
   .ed{padding:5px;gap:6px}
   .ed input[type=color]{width:34px;height:34px}
