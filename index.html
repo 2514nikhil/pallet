@@ -100,6 +100,98 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 @media(min-width:640px){.app{padding:16px;gap:16px}.seg{flex:0 1 auto}.seg button{flex:0 0 auto}.nav{padding:14px 24px;gap:22px}.nav a.l{display:inline}.hero{grid-template-columns:1.2fr .8fr;gap:32px;padding:56px 24px}.secw{padding:44px 24px;margin-bottom:32px}.feats{grid-template-columns:repeat(3,1fr);gap:16px}.band{margin:0 24px 32px;padding:28px}.foot{padding:22px 24px}.dash{grid-template-columns:190px 1fr}.side{flex-direction:column;align-items:stretch;border-bottom:0;border-right:1px solid var(--bd);padding:16px;overflow:visible}.side .logo{display:flex;margin-bottom:10px}.dm{padding:20px}.stats{grid-template-columns:repeat(3,1fr);gap:12px}.comp{padding:24px;gap:16px}}
 @media(min-width:900px){.app{grid-template-columns:300px 1fr}aside{position:sticky;top:16px;align-self:start;max-height:calc(100vh - 32px)}.list{flex-direction:column;padding:0 2px 0 0}.pal{flex:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+/* ---------- responsive shell ---------- */
+:root{--page-pad:clamp(12px,3vw,32px);--radius:16px}
+body{overflow-x:hidden}
+.app{width:min(100%,1500px);padding:var(--page-pad);gap:clamp(12px,2vw,24px)}
+aside,.panel{border-radius:var(--radius);min-width:0}
+aside,.main,.app>*{min-width:0}
+aside{padding:clamp(14px,2vw,22px)}
+.panel{padding:clamp(14px,2.2vw,24px)}
+.main{gap:clamp(12px,2vw,24px)}
+.row{min-width:0}
+.row.sp{align-items:flex-start}
+.row.sp>.row{width:min(100%,650px)}
+.seg{min-width:0}
+.seg button{white-space:nowrap}
+.edit{grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr))}
+.ed{min-width:0}
+.list{min-width:0;overscroll-behavior-inline:contain;scrollbar-width:thin}
+.pal{min-height:70px}
+#pv{min-width:0;border-radius:var(--radius)}
+.nav,.hero,.secw,.band,.foot,.dm,.comp{min-width:0}
+.hero{grid-template-columns:minmax(0,1.15fr) minmax(180px,.85fr)}
+.hero>div{min-width:0}
+.hero h2{overflow-wrap:anywhere}
+.board{width:100%;max-width:440px;justify-self:end}
+.card{min-width:0}
+.card p{overflow-wrap:anywhere}
+.comp{grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))}
+.comp .row{min-width:0}
+.comp .btn{flex:0 1 auto}
+.dm{min-width:0}
+.stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.stat b{overflow-wrap:anywhere}
+.card:has(table){overflow-x:auto}
+table{min-width:430px}
+.foot{gap:12px}
+
+@media(max-width:639px){
+  body{font-size:14px}
+  .app{padding:10px}
+  aside{gap:12px}
+  aside h1{font-size:22px}
+  .list{margin-inline:-2px;padding:0 2px 8px}
+  .pal{flex-basis:min(148px,42vw)}
+  .panel>.row.sp{display:block}
+  .panel>.row.sp>.row{width:100%;margin-top:14px}
+  .seg{flex:1 1 0}
+  .seg button{padding:10px 7px;font-size:13px}
+  .edit{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .ed{padding:5px;gap:6px}
+  .ed input[type=color]{width:34px;height:34px}
+  .ed input[type=text]{font-size:14px}
+  .row.sp>.row:last-child{width:100%}
+  #shuffle,#reset,#save{flex:1}
+  #sname{flex:1 1 130px;width:auto!important}
+  .hero{grid-template-columns:1fr;gap:22px;padding:28px 16px 24px}
+  .hero p{font-size:16px}
+  .hero .row{display:grid;grid-template-columns:1fr 1fr}
+  .hero .btn{padding-inline:10px;text-align:center}
+  .board{justify-self:center;width:min(100%,280px)}
+  .secw{padding:28px 16px;margin-bottom:18px}
+  .secw>h2{font-size:23px}
+  .band{margin:0 12px 18px;padding:18px}
+  .band .btn{width:100%;text-align:center}
+  .foot{padding:16px;display:block}
+  .foot span{display:block}
+  .foot span+span{margin-top:8px}
+  .dash{min-height:0}
+  .side{padding:8px;gap:2px}
+  .side a{padding:9px 8px;font-size:13px}
+  .dm{padding:14px}
+  .dm>.row.sp{align-items:center}
+  .dm>.row.sp h2{font-size:19px!important}
+  .stats{grid-template-columns:1fr;gap:8px}
+  .stat b{font-size:24px}
+  .comp{padding:14px;grid-template-columns:1fr;gap:10px}
+  .comp .card{padding:15px}
+  .comp .row{gap:7px}
+  .comp .btn{flex:1;text-align:center;padding-inline:10px}
+  .details-actions{display:grid}
+  textarea{min-height:140px}
+}
+@media(min-width:640px) and (max-width:899px){
+  .app{padding:16px}
+  aside{display:grid;grid-template-columns:minmax(180px,.6fr) minmax(220px,1fr);align-items:center}
+  aside .list{grid-column:1/-1}
+  .list{flex-wrap:nowrap}
+  .hero{padding:44px 24px}
+}
+@media(min-width:900px){
+  .app{padding:24px 28px}
+  aside{max-height:calc(100vh - 48px)}
+}
 </style>
 </head>
 <body>
@@ -136,7 +228,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
   <div id="pv"></div>
   <div class="panel">
     <details><summary>Export</summary>
-      <div class="row" style="margin-top:10px"><button class="btn2" id="ecss">Copy CSS variables</button><button class="btn2" id="etw">Copy Tailwind config</button><button class="btn2 pri" id="epng">Download PNG</button></div>
+      <div class="row details-actions" style="margin-top:10px"><button class="btn2" id="ecss">Copy CSS variables</button><button class="btn2" id="etw">Copy Tailwind config</button><button class="btn2 pri" id="epng">Download PNG</button></div>
       <textarea id="out" readonly aria-label="Exported code"></textarea>
       <img id="pngprev" alt="Palette sheet preview" style="display:none;max-width:100%;margin-top:10px;border-radius:10px;border:1px solid var(--ubd)">
     </details>
